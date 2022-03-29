@@ -39,3 +39,37 @@ Rust is programming language that comiples to either machine code (binary execut
 - Microsoft (rewriting some of the core low level windows things)
 - Dropbox (perf)
 - NextJS 12 (JS/TS Rust based compiler - swc)
+
+### 5. Hello World in Rust
+
+```
+fn main() {
+  println!("Hello, World!");
+}
+
+// rustc app.rs
+// file ex. - app.rs 
+```
+
+### 6. String Interpolation
+```
+fn main() {
+  let greeting = "Hello";
+  let subject = "World";
+  
+  println!("{}, {}!", greeting, subject);
+}
+// println logs output to the console (supports interpolation as part of its own implementation)
+-------------------------------------------------
+let subject = "World";
+let greeting = format!("Hello, {}!", subject);
+// format returns the string
+-------------------------------------------------
+fn main() {
+  let crach_reason = "Server crashed.";
+  panic!("I crashed! {}", crash_reason);
+  
+  println!("This will never get run");
+  // panic ends the program (not like ex. throw) - we're exiting right now.
+}
+```

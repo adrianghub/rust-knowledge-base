@@ -13,3 +13,18 @@ C/C++ level performance, with...
 - nice ergonomics and a language server
 - automatic memory management
 - a package manager and code formatter
+
+### 2. Why --not-- use Rust?
+
+- Rust is a big language - there is a whole bunch of stuff to learn.
+- Smaller ecosystem than C/C++ (but FFI)
+- Slower iteration cycle than most languages
+  - due to strict compiler
+  - "fighting" the borrow checker
+  - slow compile times for full builds
+  - tests can take awhile to build
+
+### 3. What makes the rust compiler slow?
+
+There is a number of design decisions some of which are in the name of performance. (TBC)
+

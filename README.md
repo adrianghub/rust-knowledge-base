@@ -28,3 +28,14 @@ C/C++ level performance, with...
 
 There is a number of design decisions some of which are in the name of performance. (TBC)
 
+### 4. What actually is Rust?
+
+Rust is programming language that comiples to either machine code (binary executable) or WASM.
+
+
+### 4. Who uses Rust?
+
+- Mozilla (firefox - rendering stuff)
+- Microsoft (rewriting some of the core low level windows things)
+- Dropbox (perf)
+- NextJS 12 (JS/TS Rust based compiler - swc)

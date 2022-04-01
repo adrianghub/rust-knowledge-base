@@ -158,3 +158,25 @@ fn greet(target: String) {
 <img width="595" alt="image" src="https://user-images.githubusercontent.com/44274979/161341924-4838cf03-e709-4523-a14c-8c652c7ddd93.png">
 
 <img width="534" alt="image" src="https://user-images.githubusercontent.com/44274979/161342050-565b4852-3025-4027-b786-225a863b0f5f.png">
+
+### 12. Types of strings in Rust
+
+There are indeed two separate string types in Rust (`String` and `str`), and although they’re technically different types, they are–for most intents and purposes – the same thing. They both represent a UTF-8 string of characters, stored in a contiguous region of memory.
+The only practical difference between `String` and `str` is the way memory is managed.
+It’s helpful to think about them in terms of how memory is allocated. The two Rust string types can be thought of as such:
+
+* str: a stack allocated UTF-8 string, which can be borrowed as &str and sometimes &’static str, but can’t be moved
+* String: a heap allocated UTF-8 string, which can be borrow as &String and &str, and can be moved
+
+In Rust, memory allocation is explicit, and your types usually define how memory is allocated, in addition to number of elements.
+Most of the time, when working in Rust, you’re going to be working with either a String or &str, but never a str. Rust’s standard immutable string functions are implemented for the &str type, and the mutable functions are implemented for the String type.
+
+Static lifetimes - `'static` in Rust is a special lifetime specifier that defines a reference (or borrowed variable) which is valid for the entire life of a process. Some few special cases might require an explicit &’static str, but in practice it’s something infrequently encountered.
+
+The only real difference between &’static str and &str is that although a String can be borrowed as &str, String can never be borrow as &’static str because the life of a String is never as long as the process. When a String goes out of scope, it’s released with the Drop trait.
+
+### 13. Best practices working with strings in Rust
+
+* Use String anytime you need a mutable string.
+* Use str for immutable strings which are known at compile time, or when initializing a String.
+* Write functions which accept &str as an argument for strings, unless you need to take ownership of the string, in which case use String.

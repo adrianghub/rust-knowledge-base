@@ -119,3 +119,7 @@ fn main() {
 * `main()` function is required in standalone executables. It’s the entrypoint to your CLI app.
 * `println!()` is a macro that generates code to print arguments to `STDOUT`. 
 * `macros` are like inline transpilers that generate code during compilation.
+
+9. Let & const keywords
+
+Rust uses `let` and `const` keywords just like JavaScript, though where you want to use `const` just about everywhere in JavaScript, you want to use `let` in most Rust.

@@ -165,7 +165,7 @@ There are indeed two separate string types in Rust (`String` and `str`), and alt
 The only practical difference between `String` and `str` is __the way memory is managed__.
 It’s helpful to think about them in terms of how memory is allocated. The two Rust string types can be thought of as such:
 
-* `str`: a stack allocated, immutable, fixed-length UTF-8 string, which can be borrowed as &str and sometimes `&’static str`, but can’t be moved,
+* `str`: a stack allocated, immutable, fixed-length UTF-8 string, which can be borrowed as `&str` and sometimes `&’static str`, but can’t be moved,
 * `String`: a heap allocated, growable UTF-8 string, which can be borrow as `&String` and `&str`, and can be moved
 
 You can only ever interact with str as a borrowed type aka `&str`. This is called a string `slice`, an immutable view of a string. __This is the preferred way to pass strings around__.

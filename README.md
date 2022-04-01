@@ -144,7 +144,7 @@ Error message is also shown if the IDE is set up as mentioned in p. 7
 
 ### 11. Hello world -Gotchas- #2
 
-Who doesn't love refactoring code in the sake of making reusable, perfectly crafted pieces. Try running following example:
+Who doesn't love refactoring code in the sake of making reusable, perfectly crafted pieces? Try running following example:
 
 ```
 fn main() { 

@@ -107,3 +107,15 @@ If you want more, then you’re looking for `clippy`. Clippy is like the ESlint 
 * Latest versions of dependencies and quick access to update
 
 `serayuzgur.crates`
+
+### 8. Hello world in Rust, explained
+
+```
+fn main() {
+  println!("Hello, World!");
+}
+```
+
+* `main()` function is required in standalone executables. It’s the entrypoint to your CLI app.
+* `println!()` is a macro that generates code to print arguments to `STDOUT`. 
+* `macros` are like inline transpilers that generate code during compilation.

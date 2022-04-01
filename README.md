@@ -120,6 +120,41 @@ fn main() {
 * `println!()` is a macro that generates code to print arguments to `STDOUT`. 
 * `macros` are like inline transpilers that generate code during compilation.
 
-9. Let & const keywords
+### 9. Let & const keywords
 
 Rust uses `let` and `const` keywords just like JavaScript, though where you want to use `const` just about everywhere in JavaScript, you want to use `let` in most Rust.
+
+### 10. Hello world -Gotchas- #1
+
+Try to run code syntax below (running `cargo run` from terminal window in Rust project root directory)
+
+```
+fn main() {
+let greeting = "Hello, world!"; println!("{}", greeting);
+}
+```
+
+Example of error message in Rust (while running code mentioned above)
+
+<img width="580" alt="image" src="https://user-images.githubusercontent.com/44274979/161340654-f5f51ba3-90ac-4c8b-8f2c-568aec2c3324.png">
+
+Error message is also shown if the IDE is set up as mentioned in p. 7
+
+<img width="758" alt="image" src="https://user-images.githubusercontent.com/44274979/161341170-16082066-4d84-4b20-8d7c-ee9d9194bb70.png">
+
+### 11. Hello world -Gotchas- #2
+
+Who doesn't love refactoring code in the sake of making reusable, perfectly crafted pieces. Try running following example:
+
+```
+fn main() { 
+  greet("World");
+}
+fn greet(target: String) { 
+  println!("Hello, {}", target);
+}
+```
+
+<img width="595" alt="image" src="https://user-images.githubusercontent.com/44274979/161341924-4838cf03-e709-4523-a14c-8c652c7ddd93.png">
+
+<img width="534" alt="image" src="https://user-images.githubusercontent.com/44274979/161342050-565b4852-3025-4027-b786-225a863b0f5f.png">

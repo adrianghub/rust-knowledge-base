@@ -73,3 +73,37 @@ fn main() {
   // panic ends the program (not like ex. throw) - we're exiting right now.
 }
 ```
+
+### 7. VSCode IDE recommended extensions and settings
+
+* rust-analyzer (matklad.rust-analyzer) 
+
+By default, `rust-analyzer` runs `cargo check` on save to gather project errors and warnings. `cargo check` essentially just compiles your project looking for errors.
+
+If you want more, then you’re looking for `clippy`. Clippy is like the ESlint of the Rust universe. Get `clippy` via `rustup component add clippy`.
+
+`"rust-analyzer.checkOnSave.command": "clippy"`
+
+* Disable inline hints (obviously optional)
+
+```
+"rust-analyzer.inlayHints.enable": false, 
+"rust-analyzer.inlayHints.chainingHints": false, 
+"rust-analyzer.inlayHints.parameterHints": false
+```
+
+* Prompt before downloading updates
+
+`"rust-analyzer.updates.askBeforeDownload": true`
+
+* For debugging pruposes.
+
+`vadimcn.vscode-lldb`
+
+* Syntax highlighting for TOML files
+
+`bungcip.better-toml`
+
+* Latest versions of dependencies and quick access to update
+
+`serayuzgur.crates`

@@ -161,19 +161,41 @@ fn greet(target: String) {
 
 ### 12. Types of strings in Rust
 
-There are indeed two separate string types in Rust (`String` and `str`), and although they’re technically different types, they are–for most intents and purposes – the same thing. They both represent a UTF-8 string of characters, stored in a contiguous region of memory.
-The only practical difference between `String` and `str` is the way memory is managed.
+There are indeed two separate string types in Rust (`String` and `str`), and although they’re technically different types, they are –for most intents and purposes – the same thing. They both represent a UTF-8 string of characters, stored in a contiguous region of memory.
+The only practical difference between `String` and `str` is __the way memory is managed__.
 It’s helpful to think about them in terms of how memory is allocated. The two Rust string types can be thought of as such:
 
-* str: a stack allocated UTF-8 string, which can be borrowed as &str and sometimes &’static str, but can’t be moved
-* String: a heap allocated UTF-8 string, which can be borrow as &String and &str, and can be moved
+* `str`: a stack allocated, immutable, fixed-length UTF-8 string, which can be borrowed as &str and sometimes `&’static str`, but can’t be moved,
+* `String`: a heap allocated, growable UTF-8 string, which can be borrow as `&String` and `&str`, and can be moved
 
-In Rust, memory allocation is explicit, and your types usually define how memory is allocated, in addition to number of elements.
-Most of the time, when working in Rust, you’re going to be working with either a String or &str, but never a str. Rust’s standard immutable string functions are implemented for the &str type, and the mutable functions are implemented for the String type.
+You can only ever interact with str as a borrowed type aka `&str`. This is called a string `slice`, an immutable view of a string. __This is the preferred way to pass strings around__.
 
-Static lifetimes - `'static` in Rust is a special lifetime specifier that defines a reference (or borrowed variable) which is valid for the entire life of a process. Some few special cases might require an explicit &’static str, but in practice it’s something infrequently encountered.
+```
+let mut s = String::from("Hello, World!");
+println!("{}", s.capacity()); // logs 13
+s.push_str("Here I come!");
+println!("{}", s.len()); // logs 25
 
-The only real difference between &’static str and &str is that although a String can be borrowed as &str, String can never be borrow as &’static str because the life of a String is never as long as the process. When a String goes out of scope, it’s released with the Drop trait.
+let s = "Hello, World!";
+println!("{}", s.capacity()); // compile error: no method named `capacity` found for type `&str`
+println!("{}", s.len()); // logs 13
+```
+
+`&String` - reference to a String, also called a borrowed type. This is nothing more than a pointer which you can pass around without giving up ownership.
+`&String` can be coerced to a `&str`:
+
+```
+fn main() {
+    let s = String::from("Hello, World!");
+    foo(&s);
+}
+
+fn foo(s: &str) {
+    println!("{}", s);
+}
+```
+
+In the above example, `foo()` can take either string slices or borrowed `Strings`, which is very convenient. As such, you almost never need to deal with `&Strings`.
 
 ### 13. Best practices working with strings in Rust
 

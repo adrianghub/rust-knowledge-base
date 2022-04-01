@@ -168,7 +168,11 @@ It’s helpful to think about them in terms of how memory is allocated. The two 
 * `str`: a stack allocated, immutable, fixed-length UTF-8 string, which can be borrowed as `&str` and sometimes `&’static str`, but can’t be moved,
 * `String`: a heap allocated, growable UTF-8 string, which can be borrow as `&String` and `&str`, and can be moved
 
-You can only ever interact with str as a borrowed type aka `&str`. This is called a string `slice`, an immutable view of a string. __This is the preferred way to pass strings around__.
+Since the size of `str` is unknown, you can only handle it behind a pointer. This means that you can only ever interact with `str` as a borrowed type aka `&str` - a reference to some UTF-8 data, normally called a "string slice" or just a "slice".  __This is the preferred way to pass strings around__. A slice is just a view onto some data, and that data can be anywhere, e.g.
+
+* In static storage: a string literal "foo" is a &'static str. The data is hardcoded into the executable and loaded into memory when the program runs.
+* Inside a heap allocated String: String dereferences to a &str view of the String's data.
+* On the stack.
 
 ```
 let mut s = String::from("Hello, World!");
@@ -196,6 +200,8 @@ fn foo(s: &str) {
 ```
 
 In the above example, `foo()` can take either string slices or borrowed `Strings`, which is very convenient. As such, you almost never need to deal with `&Strings`.
+
+In summary, use `String` if you need owned string data (like passing strings to other threads, or building them at runtime), and use `&str` if you only need a view of a string.
 
 ### 13. Best practices working with strings in Rust
 

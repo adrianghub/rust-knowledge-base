@@ -208,3 +208,29 @@ In summary, use `String` if you need owned string data (like passing strings to 
 * Use String anytime you need a mutable string.
 * Use str for immutable strings which are known at compile time, or when initializing a String.
 * Write functions which accept &str as an argument for strings, unless you need to take ownership of the string, in which case use String.
+
+### 14. Concept of immutable variables
+
+Where you want const in JavaScript, you want let in Rust. Where you’d use let in JavaScript, you’d use let mut in Rust. The keyword mut is required to declare a variable as mutable (changeable). That’s right, everything in Rust is immutable (unchangeable) by default.
+
+One major difference with Rust is that you can only reassign a variable with a value of the same type.
+
+```
+fn main() {
+  let mut mutable = 1; 
+  println!("{}", mutable);
+  mutable = "3"; // Notice this isn't a number.
+  println!("{}", mutable);
+}
+```
+
+That said, you can assign a different type to a variable with the same name by using another let statement
+
+```
+fn main() {
+  let myvar = 1;
+  println!("{}", myvar); 
+  let myvar = "3"; 
+  println!("{}", myvar);
+}
+```
